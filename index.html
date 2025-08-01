@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> حكاية مدرسة الإحياء والبعث</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Warm Neutrals & Subtle Terracotta -->
+    <!-- Application Structure Plan: The application is designed as a single, top-to-bottom scrollable page, creating a linear narrative journey. It begins with an introduction, then flows sequentially through dedicated sections for the founder, his disciples (with interactive cards), the reasons and results of their evolution (as an interactive module), and concludes with their legacy (text and a summary chart). This structure was chosen to provide a clear, story-like user flow, making the content easy to follow chronologically while embedding interactive elements for deeper exploration within each section. -->
+    <!-- Visualization & Content Choices: 
+        - Report Info: The three types of Al-Barudi's disciples. -> Goal: Organize & Compare. -> Viz/Method: Interactive cards (HTML/CSS/JS) within a dedicated section. -> Interaction: Clicking a card reveals details below it. -> Justification: Allows users to focus on one type at a time within the main narrative flow. -> Library: Vanilla JS.
+        - Report Info: The reasons for renewal and their resulting manifestations. -> Goal: Show Relationships. -> Viz/Method: A two-part interactive module within its own section. -> Interaction: Clicking a 'Reason' button dynamically updates the 'Manifestation' text block. -> Justification: Directly visualizes the cause-and-effect relationship, a core concept, in a clear, interactive way. -> Library: Vanilla JS.
+        - Report Info: The overall contributions of the school. -> Goal: Summarize & Inform. -> Viz/Method: Donut Chart alongside summary text in the final section. -> Interaction: Hovering over segments shows tooltips. -> Justification: Provides a quick, high-level visual summary of the school's impact as a concluding element. -> Library: Chart.js (Canvas).
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #FDFCFB;
+            color: #4A4A4A;
+        }
+        .reason-btn.active {
+            background-color: #E07A5F;
+            color: white;
+            transform: scale(1.05);
+        }
+        .content-card {
+            background-color: #FEFAE0;
+            border-right: 4px solid #D4A373;
+        }
+        .section-divider {
+            border-bottom: 2px dashed #D4A373;
+            width: 100px;
+            margin: 0 auto;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div class="container mx-auto p-4 md:p-8 max-w-5xl">
+
+        <!-- Header Section -->
+        <header class="text-center mb-16">
+            <h1 class="text-4xl md:text-5xl font-bold text-[#3A3A3A] mb-2">حكاية مدرسة الإحياء والبعث</h1>
+            <p class="text-lg text-gray-600">رحلة تفاعلية في قصة عودة الروح للشعر العربي على يد البارودي وتلاميذه</p>
+        </header>
+
+        <!-- Main Content -->
+        <main class="space-y-16">
+
+            <!-- Section 1: Introduction -->
+            <section id="intro-section">
+                <div class="bg-white rounded-2xl shadow-lg p-6 md:p-10">
+                    <h2 class="text-2xl md:text-3xl font-bold mb-4 text-[#D4A373] text-center">البداية: الكابتن المؤسس</h2>
+                    <div class="content-card p-6 rounded-lg">
+                        <h3 class="font-bold text-xl mb-3">محمود سامي البارودي: من أعاد للشعر هيبته</h3>
+                        <p class="text-base md:text-lg leading-relaxed">في زمن كان فيه الشعر العربي قد فقد الكثير من بريقه، ظهر الشاعر الكبير محمود سامي البارودي. كان بمثابة "الكابتن" الذي قرر أن يعيد لهذا الفن قوته وعظمته. أطلق حركته التي عُرفت بـ **"الإحياء والبعث"**، وكأنه يعيد الحياة لجسد الشعر من جديد. بدأ بكتابة قصائد قوية وفخمة، مستلهمًا روح الشعر العربي في عصوره الذهبية، وبذلك رسم طريقًا جديدًا سار عليه جيل كامل من بعده.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <div class="section-divider"></div>
+
+            <!-- Section 2: Disciples -->
+            <section id="disciples-section">
+                <div class="bg-white rounded-2xl shadow-lg p-6 md:p-10">
+                    <h2 class="text-2xl md:text-3xl font-bold mb-4 text-[#D4A373] text-center">الفريق: الجيل الجديد الذي حمل الراية</h2>
+                    <p class="mb-8 text-center text-gray-600">لم يكن تلاميذ البارودي مجرد مقلدين، بل كانوا فريقًا متكاملًا تعلم من قائده بطرق مختلفة. اضغط على كل طريقة لتكتشف أبرز تلاميذها.</p>
+                    <div class="grid md:grid-cols-3 gap-4 text-center mb-6">
+                        <div class="disciple-card p-4 bg-gray-50 rounded-lg cursor-pointer border-2 border-transparent hover:border-[#D4A373] hover:shadow-md transition-all" onclick="showDiscipleInfo('mushafaha')">
+                            <h3 class="font-bold text-xl mb-2">🗣️</h3>
+                            <h3 class="font-bold text-lg">بالمشافهة</h3>
+                            <p class="text-sm text-gray-500">جلسوا معه وتعلموا منه مباشرة.</p>
+                        </div>
+                        <div class="disciple-card p-4 bg-gray-50 rounded-lg cursor-pointer border-2 border-transparent hover:border-[#D4A373] hover:shadow-md transition-all" onclick="showDiscipleInfo('murasala')">
+                            <h3 class="font-bold text-xl mb-2">✉️</h3>
+                            <h3 class="font-bold text-lg">بالمراسلة</h3>
+                            <p class="text-sm text-gray-500">تواصلوا معه عبر الرسائل.</p>
+                        </div>
+                        <div class="disciple-card p-4 bg-gray-50 rounded-lg cursor-pointer border-2 border-transparent hover:border-[#D4A373] hover:shadow-md transition-all" onclick="showDiscipleInfo('qiraa')">
+                            <h3 class="font-bold text-xl mb-2">📖</h3>
+                            <h3 class="font-bold text-lg">بالقراءة</h3>
+                            <p class="text-sm text-gray-500">قرأوا كتابه وتأثروا به.</p>
+                        </div>
+                    </div>
+                    <div id="disciple-info-display" class="content-card p-6 rounded-lg mt-6 min-h-[120px] transition-all duration-300">
+                        <p class="text-gray-500">اختر طريقة من الأعلى لمعرفة المزيد...</p>
+                    </div>
+                </div>
+            </section>
+
+            <div class="section-divider"></div>
+
+            <!-- Section 3: Evolution -->
+            <section id="evolution-section">
+                <div class="bg-white rounded-2xl shadow-lg p-6 md:p-10">
+                    <h2 class="text-2xl md:text-3xl font-bold mb-4 text-[#D4A373] text-center">التطور: لماذا وكيف تغير الشعر؟</h2>
+                    <p class="mb-8 text-center text-gray-600">لم يقف التلاميذ عند ما تعلموه فقط، بل تفاعلوا مع عصرهم وطوروا الشعر. اكتشف العلاقة بين أسباب التجديد ونتائجه بالضغط على كل سبب.</p>
+                    <div class="flex flex-col md:flex-row gap-8">
+                        <div class="md:w-1/3">
+                            <h3 class="font-semibold mb-3 text-lg">أسباب التجديد:</h3>
+                            <div class="flex flex-col gap-3">
+                                <button class="reason-btn active text-right p-3 rounded-lg transition-all duration-200 shadow-sm" data-reason="reason1">1. الانفتاح على ثقافات الغرب</button>
+                                <button class="reason-btn text-right p-3 rounded-lg transition-all duration-200 shadow-sm" data-reason="reason2">2. النضال الوطني ضد الاستعمار</button>
+                                <button class="reason-btn text-right p-3 rounded-lg transition-all duration-200 shadow-sm" data-reason="reason3">3. التفاعل مع قضايا العصر</button>
+                            </div>
+                        </div>
+                        <div class="md:w-2/3">
+                            <h3 class="font-semibold mb-3 text-lg">النتيجة (مظاهر التجديد):</h3>
+                            <div id="evolution-result" class="content-card p-6 rounded-lg min-h-[180px]">
+                                <div id="reason1" class="reason-content">
+                                    <h4 class="font-bold mb-2">معالجة مشكلات المجتمع</h4>
+                                    <p>بدأوا في التعبير عن مشكلات مجتمعهم وما يتصل بها سياسيًا واجتماعيًا، فأصبح شعرهم مرآة حقيقية لعصرهم.</p>
+                                </div>
+                                <div id="reason2" class="reason-content hidden">
+                                    <h4 class="font-bold mb-2">ترسيخ الإحساس بتراث الأجداد</h4>
+                                    <p>إيمانهم بفكرة الجامعة الإسلامية كرمز لوحدة المسلمين في مواجهة الاحتلال، عمّق من وعيهم الوطني وإحساسهم بتاريخ الأجداد العريق.</p>
+                                </div>
+                                <div id="reason3" class="reason-content hidden">
+                                    <h4 class="font-bold mb-2">التعبير عن منجزات العصر</h4>
+                                    <p>لم يكتفوا بالقضايا الكبرى، بل عبروا عن التغيرات اليومية والاختراعات الحديثة، فدخلت السفينة والطيارة والقطار في قصائدهم.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <div class="section-divider"></div>
+
+            <!-- Section 4: Legacy -->
+            <section id="legacy-section">
+                <div class="bg-white rounded-2xl shadow-lg p-6 md:p-10">
+                    <h2 class="text-2xl md:text-3xl font-bold mb-4 text-[#D4A373] text-center">الإرث: جسر بين الأصالة والمعاصرة</h2>
+                     <div class="grid md:grid-cols-2 gap-8 items-center">
+                        <div class="order-2 md:order-1">
+                            <h3 class="font-semibold text-xl mb-3">هل تخلوا عن القديم تمامًا؟</h3>
+                            <p class="mb-4">بالطبع لا. كانوا كمن يبني طابقًا جديدًا في بناءٍ أساسه متين. لقد واءموا بين اتجاهين:</p>
+                            <ul class="list-inside list-disc space-y-2">
+                                <li><span class="font-bold text-[#3A3A3A]">الأخذ من التراث:</span> حافظوا على شكل القصيدة الأصيل، وجمال الصياغة، وروعة الموسيقى.</li>
+                                <li><span class="font-bold text-[#3A3A3A]">الالتفات إلى ثقافة العصر:</span> ربطوا شعرهم بقضايا عصرهم وأحداثه، فصار شعرهم حيًا ومعبرًا.</li>
+                            </ul>
+                             <p class="mt-4 content-card p-4 rounded-lg">باختصار، خطوا بالشعر خطوات فاقت ما صنعه أستاذهم البارودي، فجعلوا القصيدة تعبر عن تجاربهم الذاتية وهموم مجتمعهم.</p>
+                        </div>
+                        <div class="order-1 md:order-2">
+                            <h3 class="font-semibold text-xl mb-3 text-center">أبرز مجالات التجديد</h3>
+                             <div class="chart-container">
+                                <canvas id="legacyChart"></canvas>
+                            </div>
+                        </div>
+                     </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script>
+        const discipleInfo = {
+            mushafaha: {
+                title: "تلاميذ بالمشافهة",
+                text: "هم الذين جلسوا مع البارودي مباشرة وتلقوا منه الشعر والنصائح، ومن أبرزهم أمير الشعراء **أحمد شوقي**، وشاعر النيل **حافظ إبراهيم**، بالإضافة إلى **عبد المحسن الكاظمي**."
+            },
+            murasala: {
+                title: "تلاميذ بالمراسلة",
+                text: "هم الذين تواصلوا مع البارودي عبر الرسائل والخطابات لطلب التوجيه، وأشهرهم هو **شكيب أرسلان** من سوريا."
+            },
+            qiraa: {
+                title: "تلاميذ بالقراءة",
+                text: "هم جيل واسع من الشعراء الذين لم يقابلوا البارودي، لكنهم قرأوا أشعاره في كتابه **'وسيلة الأدباء'** الذي ألفه أستاذه حسين المرصفي، وتأثروا بمنهجه. من بينهم **الزهاوي** و**الرصافي** في العراق."
+            }
+        };
+
+        function showDiscipleInfo(type) {
+            const display = document.getElementById('disciple-info-display');
+            const info = discipleInfo[type];
+            display.innerHTML = `<h4 class="font-bold text-lg mb-2 text-[#3A3A3A]">${info.title}</h4><p>${info.text}</p>`;
+        }
+        
+        const reasonBtns = document.querySelectorAll('.reason-btn');
+        const reasonContents = document.querySelectorAll('.reason-content');
+
+        reasonBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                reasonBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const reasonId = btn.dataset.reason;
+                reasonContents.forEach(content => {
+                    content.classList.add('hidden');
+                    if(content.id === reasonId) {
+                        content.classList.remove('hidden');
+                    }
+                });
+            });
+        });
+
+        const ctx = document.getElementById('legacyChart');
+        if (ctx) {
+            new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['التعبير عن قضايا المجتمع', 'التجارب الذاتية', 'الاهتمام بالصياغة والموسيقى', 'التنويع في الأغراض (مسرحي وملحمي)'],
+                    datasets: [{
+                        label: 'مساهمات المدرسة',
+                        data: [40, 25, 20, 15],
+                        backgroundColor: [
+                            '#E07A5F',
+                            '#3D405B',
+                            '#81B29A',
+                            '#F2CC8F'
+                        ],
+                        borderColor: '#FDFCFB',
+                        borderWidth: 5
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                padding: 20,
+                                font: {
+                                    family: "'Cairo', sans-serif",
+                                    size: 12
+                                }
+                            }
+                        },
+                        tooltip: {
+                            bodyFont: {
+                                family: "'Cairo', sans-serif"
+                            },
+                            titleFont: {
+                                family: "'Cairo', sans-serif"
+                            }
+                        }
+                    }
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>

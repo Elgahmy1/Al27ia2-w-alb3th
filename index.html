@@ -3,18 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>  مدرسة الإحياء والبعث</title>
+    <title> مدرسة الإحياء والبعث</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;600;700&display=swap" rel="stylesheet">
     <!-- Chosen Palette: Calming Earth Tones -->
-    <!-- Application Structure Plan: The application is designed as a vertical, "story-timeline" scrollable page. It guides the user through a chronological and thematic journey. Each major concept (Founder, Disciples, Factors, Manifestations, Key Figures, Legacy) is presented as a distinct "stop" or "chapter" on this journey, separated by visual dividers. Interactivity is focused and purposeful: modal popups for disciple details, a linked-list interaction for cause-and-effect, and an accordion for the final exercises section. This structure was chosen to be calming, intuitive, and easy to follow. -->
+    <!-- Application Structure Plan: The application is a vertical, "story-timeline" scrollable page. It guides the user through a chronological and thematic journey. Each major concept is a "stop" on this journey. The final section is a comprehensive, categorized question bank using an accordion interface for a clean, user-driven review experience. This structure was chosen to be calming, intuitive, and complete, addressing all user requests. -->
     <!-- Visualization & Content Choices: 
-        - Report Info: Disciples and their learning methods. -> Goal: Organize & Inform cleanly. -> Viz/Method: Cards with a "Learn More" button that triggers a modal window. -> Interaction: Clicking a button opens a focused popup. -> Justification: Prevents cluttering the main timeline with too much text. -> Library: Vanilla JS.
-        - Report Info: Renewal Factors and Manifestations. -> Goal: Show Relationships clearly. -> Viz/Method: Two linked columns. -> Interaction: Hovering over a "Factor" highlights the corresponding "Manifestation". -> Justification: A simple, elegant way to show the cause-and-effect link. -> Library: Vanilla JS.
-        - Report Info: Key Figures (Shawqi, Muharram). -> Goal: Highlight contributions. -> Viz/Method: Styled "profile" cards. -> Justification: Gives prominence to these figures in an organized format. -> Library: N/A (HTML/CSS).
-        - Report Info: Exercises and Answers. -> Goal: Test understanding. -> Viz/Method: Interactive Accordion. -> Interaction: Clicking a question reveals its answer. -> Justification: A compact and clean way to present Q&A content without a long scroll. -> Library: Vanilla JS.
+        - Report Info: Disciples and their learning methods. -> Goal: Organize & Inform. -> Viz/Method: Modal popups. -> Justification: Prevents clutter. -> Library: Vanilla JS.
+        - Report Info: Renewal Factors and Manifestations. -> Goal: Show Relationships. -> Viz/Method: Two linked columns with hover interaction. -> Justification: Elegant and intuitive cause-and-effect visualization. -> Library: Vanilla JS.
+        - Report Info: Comprehensive Q&A. -> Goal: Test understanding and provide a complete review. -> Viz/Method: A categorized, multi-part accordion. -> Interaction: Clicking a question reveals its detailed answer. -> Justification: Manages a large amount of text cleanly, allowing users to focus on one question at a time. -> Library: Vanilla JS.
     -->
     <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
     <style>
@@ -186,97 +185,321 @@
                 </div>
             </div>
 
-            <!-- Item 6: Exercises -->
+            <!-- Item 6: Comprehensive Question Bank -->
             <div class="timeline-item relative">
                 <div class="timeline-dot">6</div>
                 <div class="bg-white p-6 rounded-xl shadow-md">
-                    <h2 class="text-2xl font-bold text-[#8c7a60] mb-4">الفصل السادس: تدريبات وتطبيقات</h2>
-                    <p class="mb-6 text-gray-600">اختبر فهمك للدرس. اضغط على كل سؤال لترى الإجابة التفصيلية.</p>
-                    <div class="space-y-2">
-                        <!-- Q1 -->
+                    <h2 class="text-2xl font-bold text-[#8c7a60] mb-4">الفصل السادس: بنك أسئلة شامل</h2>
+                    <p class="mb-6 text-gray-600">مراجعة نهائية للدرس. اضغط على كل سؤال لترى الإجابة التفصيلية.</p>
+                    
+                    <div class="space-y-8">
+                        <!-- Category 1 -->
                         <div>
-                            <button class="accordion-header w-full text-right flex justify-between items-center p-3 rounded-lg" onclick="toggleAccordion(this)">
-                                <span class="font-semibold">س1: ما أثر النضال الوطني على تلاميذ البارودي؟</span>
-                                <span class="accordion-icon font-bold text-xl text-[#8c7a60]">+</span>
-                            </button>
-                            <div class="accordion-content">
-                                <p class="p-4 leading-relaxed">أدى النضال الوطني ضد الاستعمار إلى زيادة وعي تلاميذ البارودي، فعمّق إحساسهم بتراث الأجداد وأهمية الوحدة لمواجهة المحتل، وهو ما دفعهم لكتابة شعر حماسي يدعو للثورة ويرسخ الهوية الوطنية.</p>
+                            <h3 class="text-lg font-bold mb-3 border-b-2 border-[#c9bba7] pb-2">أولاً: المفاهيم الأساسية والرواد</h3>
+                            <div class="space-y-2 accordion-group">
+                                <div class="accordion-item">
+                                    <button class="accordion-header w-full text-right flex justify-between items-center p-3 rounded-lg" onclick="toggleAccordion(this)">
+                                        <span class="font-semibold">1. ما الحالة التي كان عليها الشعر العربي قبل ظهور البارودي؟</span>
+                                        <span class="accordion-icon font-bold text-xl text-[#8c7a60]">+</span>
+                                    </button>
+                                    <div class="accordion-content">
+                                        <p class="p-4 leading-relaxed">كان الشعر في حالة ضعف شديد وركود، حيث سيطرت عليه الصنعة اللفظية المتكلفة، وتعددت فيه الأغراض السطحية، وابتعد عن التعبير عن قضايا المجتمع الحقيقية.</p>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <button class="accordion-header w-full text-right flex justify-between items-center p-3 rounded-lg" onclick="toggleAccordion(this)">
+                                        <span class="font-semibold">2. لماذا سُميت مدرسة البارودي بـ "مدرسة الإحياء والبعث"؟</span>
+                                        <span class="accordion-icon font-bold text-xl text-[#8c7a60]">+</span>
+                                    </button>
+                                    <div class="accordion-content">
+                                        <p class="p-4 leading-relaxed">سُميت بذلك لأن البارودي قام بإحياء الشعر العربي من مرقده، وبعث فيه الروح من جديد بعد أن كان جسدًا هامداً، وذلك عن طريق العودة به إلى أصوله القوية في عصور الازدهار.</p>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <button class="accordion-header w-full text-right flex justify-between items-center p-3 rounded-lg" onclick="toggleAccordion(this)">
+                                        <span class="font-semibold">3. من هو رائد مدرسة الإحياء والبعث؟ وما منهجه؟</span>
+                                        <span class="accordion-icon font-bold text-xl text-[#8c7a60]">+</span>
+                                    </button>
+                                    <div class="accordion-content">
+                                        <p class="p-4 leading-relaxed">الرائد هو الشاعر محمود سامي البارودي. وكان منهجه يعتمد على محاكاة (مجاراة) كبار الشعراء القدامى في العصور العباسية والأموية، فاستلهم منهم قوة الأسلوب، ورصانة الألفاظ، وجزالة التراكيب.</p>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <button class="accordion-header w-full text-right flex justify-between items-center p-3 rounded-lg" onclick="toggleAccordion(this)">
+                                        <span class="font-semibold">4. من هم "الكلاسيكيون الجدد"؟ ولماذا أُطلق عليهم هذا الاسم؟</span>
+                                        <span class="accordion-icon font-bold text-xl text-[#8c7a60]">+</span>
+                                    </button>
+                                    <div class="accordion-content">
+                                        <p class="p-4 leading-relaxed">هم تلاميذ البارودي (مثل شوقي وحافظ). أُطلق عليهم هذا الاسم لأنهم جمعوا بين سمتين: الكلاسيكية، المتمثلة في أخذهم شكل القصيدة من القدماء (الوزن والقافية)، والجديدة، المتمثلة في ربطهم مضمون الشعر بقضايا عصرهم وثقافته الحديثة.</p>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <button class="accordion-header w-full text-right flex justify-between items-center p-3 rounded-lg" onclick="toggleAccordion(this)">
+                                        <span class="font-semibold">5. اذكر ثلاث طرق مختلفة تعلم بها التلاميذ من أستاذهم البارودي.</span>
+                                        <span class="accordion-icon font-bold text-xl text-[#8c7a60]">+</span>
+                                    </button>
+                                    <div class="accordion-content">
+                                        <p class="p-4 leading-relaxed">1. بالمشافهة: (اللقاء المباشر) مثل أحمد شوقي وحافظ إبراهيم.<br>2. بالمراسلة: (عبر الرسائل) مثل شكيب أرسلان.<br>3. بالقراءة: (قراءة ما نُشر له في كتاب "الوسيلة الأدبية").</p>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <button class="accordion-header w-full text-right flex justify-between items-center p-3 rounded-lg" onclick="toggleAccordion(this)">
+                                        <span class="font-semibold">6. ما مفهوم "شعر المناسبات" الذي ارتبط بالمدرسة؟</span>
+                                        <span class="accordion-icon font-bold text-xl text-[#8c7a60]">+</span>
+                                    </button>
+                                    <div class="accordion-content">
+                                        <p class="p-4 leading-relaxed">هو الشعر الذي يُكتب لتوثيق حدث معين أو مناسبة اجتماعية أو سياسية (مثل المدح، الرثاء، التهنئة، تأريخ الأحداث). وقد طغى على شعرهم بسبب انشغالهم بقضايا عصرهم.</p>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <button class="accordion-header w-full text-right flex justify-between items-center p-3 rounded-lg" onclick="toggleAccordion(this)">
+                                        <span class="font-semibold">7. علل: تلاميذ البارودي خطوا بالشعر خطوة فاقت ما صنعه أستاذهم.</span>
+                                        <span class="accordion-icon font-bold text-xl text-[#8c7a60]">+</span>
+                                    </button>
+                                    <div class="accordion-content">
+                                        <p class="p-4 leading-relaxed">لأن البارودي كان دوره الأساسي هو "الإحياء" (إعادة بناء الهيكل القوي للشعر)، بينما التلاميذ أضافوا خطوة "التطوير والتجديد" بجعل هذا الهيكل يعبر عن روح العصر، ومشكلات المجتمع، والتجارب الذاتية.</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <!-- Q2 -->
+
+                        <!-- Category 2 -->
                         <div>
-                            <button class="accordion-header w-full text-right flex justify-between items-center p-3 rounded-lg" onclick="toggleAccordion(this)">
-                                <span class="font-semibold">س2: ما موقف تلاميذ البارودي من مشكلات مجتمعهم؟</span>
-                                <span class="accordion-icon font-bold text-xl text-[#8c7a60]">+</span>
-                            </button>
-                            <div class="accordion-content">
-                                <p class="p-4 leading-relaxed">كان موقفهم إيجابيًا ومتفاعلًا؛ حيث عالجوا مشكلات مجتمعهم السياسية والاجتماعية، وجعلوا شعرهم مرآة صادقة لروح العصر الذي يعيشون فيه، فلم يعد الشعر مقتصرًا على الأغراض التقليدية فقط.</p>
+                            <h3 class="text-lg font-bold mb-3 border-b-2 border-[#c9bba7] pb-2">ثانياً: العوامل والمؤثرات</h3>
+                            <div class="space-y-2 accordion-group">
+                                <div class="accordion-item">
+                                    <button class="accordion-header w-full text-right flex justify-between items-center p-3 rounded-lg" onclick="toggleAccordion(this)">
+                                        <span class="font-semibold">8. ما أثر الانفتاح على الثقافة الغربية في تطوير شعرهم؟</span>
+                                        <span class="accordion-icon font-bold text-xl text-[#8c7a60]">+</span>
+                                    </button>
+                                    <div class="accordion-content">
+                                        <p class="p-4 leading-relaxed">أتاح لهم الاطلاع على الآداب الأوروبية، مما فتح أعينهم على أفكار وأساليب وأغراض شعرية جديدة (كالمسرح الشعري)، وساعدهم على الخروج من الأطر التقليدية الضيقة.</p>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <button class="accordion-header w-full text-right flex justify-between items-center p-3 rounded-lg" onclick="toggleAccordion(this)">
+                                        <span class="font-semibold">9. كيف أثر النضال الوطني ضد الاحتلال على شعر هذه المدرسة؟</span>
+                                        <span class="accordion-icon font-bold text-xl text-[#8c7a60]">+</span>
+                                    </button>
+                                    <div class="accordion-content">
+                                        <p class="p-4 leading-relaxed">عمّق من وعيهم بتراث الأجداد، وجعلهم يشعرون بمسؤولية تاريخية تجاه وطنهم، فاستخدموا الشعر كسلاح لمقاومة المحتل، وحث الجماهير على الثورة، وترسيخ الهوية الوطنية.</p>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <button class="accordion-header w-full text-right flex justify-between items-center p-3 rounded-lg" onclick="toggleAccordion(this)">
+                                        <span class="font-semibold">10. ما علاقة الصحافة بسهولة أسلوب تلاميذ البارودي؟</span>
+                                        <span class="accordion-icon font-bold text-xl text-[#8c7a60]">+</span>
+                                    </button>
+                                    <div class="accordion-content">
+                                        <p class="p-4 leading-relaxed">علاقة وثيقة ومباشرة. لأن الصحافة تخاطب جمهورًا واسعًا، فقد فرضت عليهم استخدام أسلوب واضح وسلس ومباشر لضمان وصول أفكارهم، مما أثر على لغتهم الشعرية.</p>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <button class="accordion-header w-full text-right flex justify-between items-center p-3 rounded-lg" onclick="toggleAccordion(this)">
+                                        <span class="font-semibold">11. ما المقصود بفكرة "الجامعة الإسلامية" وكيف انعكست في شعرهم؟</span>
+                                        <span class="accordion-icon font-bold text-xl text-[#8c7a60]">+</span>
+                                    </button>
+                                    <div class="accordion-content">
+                                        <p class="p-4 leading-relaxed">هي فكرة سياسية دعت إلى توحيد المسلمين في العالم لمواجهة الاستعمار الغربي. انعكست في شعرهم من خلال الدعوة إلى الوحدة، والتنديد بالاحتلال، واستلهام التاريخ الإسلامي كرمز للعزة.</p>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <button class="accordion-header w-full text-right flex justify-between items-center p-3 rounded-lg" onclick="toggleAccordion(this)">
+                                        <span class="font-semibold">12. اذكر ثلاثة من قضايا العصر التي تفاعل معها التلاميذ.</span>
+                                        <span class="accordion-icon font-bold text-xl text-[#8c7a60]">+</span>
+                                    </button>
+                                    <div class="accordion-content">
+                                        <p class="p-4 leading-relaxed">1. الدعوة إلى الدستور. 2. قضية تحرير المرأة (دعوة قاسم أمين). 3. إنشاء الجامعة المصرية.</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <!-- Q3 -->
+
+                        <!-- Category 3 -->
                         <div>
-                            <button class="accordion-header w-full text-right flex justify-between items-center p-3 rounded-lg" onclick="toggleAccordion(this)">
-                                <span class="font-semibold">س3: ما العوامل التي ساعدت تلاميذ البارودي على التطوير؟</span>
-                                <span class="accordion-icon font-bold text-xl text-[#8c7a60]">+</span>
-                            </button>
-                            <div class="accordion-content">
-                                <p class="p-4 leading-relaxed">العوامل هي: الانفتاح على الثقافة الغربية، النضال الوطني الذي عمّق وعيهم، إيمانهم بفكرة الجامعة الإسلامية، وتفاعلهم مع قضايا العصر المتغيرة.</p>
+                            <h3 class="text-lg font-bold mb-3 border-b-2 border-[#c9bba7] pb-2">ثالثاً: الخصائص الفنية للشعر</h3>
+                            <div class="space-y-2 accordion-group">
+                                <div class="accordion-item">
+                                    <button class="accordion-header w-full text-right flex justify-between items-center p-3 rounded-lg" onclick="toggleAccordion(this)">
+                                        <span class="font-semibold">13. ما السمة التي حافظ عليها التلاميذ من شكل القصيدة القديمة؟</span>
+                                        <span class="accordion-icon font-bold text-xl text-[#8c7a60]">+</span>
+                                    </button>
+                                    <div class="accordion-content">
+                                        <p class="p-4 leading-relaxed">حافظوا بشكل أساسي على وحدة الوزن والقافية في القصيدة، والالتزام بالبناء العمودي التقليدي.</p>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <button class="accordion-header w-full text-right flex justify-between items-center p-3 rounded-lg" onclick="toggleAccordion(this)">
+                                        <span class="font-semibold">14. كيف وازن التلاميذ بين "الأخذ من التراث" و "الالتفات لثقافة العصر"؟</span>
+                                        <span class="accordion-icon font-bold text-xl text-[#8c7a60]">+</span>
+                                    </button>
+                                    <div class="accordion-content">
+                                        <p class="p-4 leading-relaxed">وازنوا بينهما عن طريق أخذ الشكل والقالب الفني من التراث (الوزن والقافية، قوة الأسلوب)، بينما جعلوا المضمون والموضوع يعبر عن ثقافة عصرهم وقضاياه الحديثة.</p>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <button class="accordion-header w-full text-right flex justify-between items-center p-3 rounded-lg" onclick="toggleAccordion(this)">
+                                        <span class="font-semibold">15. "اهتم تلاميذ البارودي بالناحية البيانية". وضح ذلك.</span>
+                                        <span class="accordion-icon font-bold text-xl text-[#8c7a60]">+</span>
+                                    </button>
+                                    <div class="accordion-content">
+                                        <p class="p-4 leading-relaxed">نعم، لقد اهتموا بجماليات الصياغة وروعة البيان، فحرصوا على استخدام الصور البلاغية (التشبيه، الاستعارة، الكناية) لإضفاء القوة والتأثير على شعرهم، على طريقة القدماء.</p>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <button class="accordion-header w-full text-right flex justify-between items-center p-3 rounded-lg" onclick="toggleAccordion(this)">
+                                        <span class="font-semibold">16. علل: لم تعرف قصائدهم "الوحدة العضوية" في معظمها.</span>
+                                        <span class="accordion-icon font-bold text-xl text-[#8c7a60]">+</span>
+                                    </button>
+                                    <div class="accordion-content">
+                                        <p class="p-4 leading-relaxed">لأنهم ساروا على نهج القدماء في بناء القصيدة، حيث كان البيت هو وحدة القصيدة (وحدة البيت)، مما سمح بتعدد الأغراض داخل القصيدة الواحدة، وهو ما يتعارض مع الوحدة العضوية.</p>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <button class="accordion-header w-full text-right flex justify-between items-center p-3 rounded-lg" onclick="toggleAccordion(this)">
+                                        <span class="font-semibold">17. ما أبرز مظهرين للتجديد في "مضمون" الشعر لديهم؟</span>
+                                        <span class="accordion-icon font-bold text-xl text-[#8c7a60]">+</span>
+                                    </button>
+                                    <div class="accordion-content">
+                                        <p class="p-4 leading-relaxed">1. معالجة قضايا المجتمع السياسية والاجتماعية. 2. التعبير عن منجزات العصر الحديثة والمخترعات.</p>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <button class="accordion-header w-full text-right flex justify-between items-center p-3 rounded-lg" onclick="toggleAccordion(this)">
+                                        <span class="font-semibold">18. "أفسح التلاميذ المجال لمزيد من التجارب الذاتية". وضح.</span>
+                                        <span class="accordion-icon font-bold text-xl text-[#8c7a60]">+</span>
+                                    </button>
+                                    <div class="accordion-content">
+                                        <p class="p-4 leading-relaxed">على عكس القدماء الذين كان شعرهم غالبًا موضوعيًا، بدأ تلاميذ البارودي في التعبير عن بعض تجاربهم ومشاعرهم الذاتية، وإن لم تكن هي السمة الغالبة على شعرهم.</p>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <button class="accordion-header w-full text-right flex justify-between items-center p-3 rounded-lg" onclick="toggleAccordion(this)">
+                                        <span class="font-semibold">19. من حيث اللغة، ما السمة التي غلبت على شعرهم؟</span>
+                                        <span class="accordion-icon font-bold text-xl text-[#8c7a60]">+</span>
+                                    </button>
+                                    <div class="accordion-content">
+                                        <p class="p-4 leading-relaxed">غلبت عليهم سمة جزالة الألفاظ وفصاحتها، مع الميل إلى السهولة والوضوح في بعض الأحيان بسبب تأثرهم بالصحافة.</p>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <button class="accordion-header w-full text-right flex justify-between items-center p-3 rounded-lg" onclick="toggleAccordion(this)">
+                                        <span class="font-semibold">20. ما المقصود بـ "شعر المحافل"؟</span>
+                                        <span class="accordion-icon font-bold text-xl text-[#8c7a60]">+</span>
+                                    </button>
+                                    <div class="accordion-content">
+                                        <p class="p-4 leading-relaxed">هو مرادف لشعر المناسبات، ويقصد به الشعر الذي يُلقى في التجمعات والمناسبات الرسمية والوطنية، وقد كان سمة بارزة في شعرهم لتفاعلهم مع أحداث عصرهم.</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <!-- Q4 -->
+
+                        <!-- Category 4 -->
                         <div>
-                           <button class="accordion-header w-full text-right flex justify-between items-center p-3 rounded-lg" onclick="toggleAccordion(this)">
-                                <span class="font-semibold">س4: كيف فاقت خطوات التلاميذ ما صنعه البارودي؟</span>
-                                <span class="accordion-icon font-bold text-xl text-[#8c7a60]">+</span>
-                            </button>
-                            <div class="accordion-content">
-                                <p class="p-4 leading-relaxed">لأنهم لم يكتفوا بإحياء الشعر فقط، بل جعلوه يعبر عن قضايا عصرهم وتجاربهم الذاتية، وربطوه بالصحافة والجماهير، وطوروا في أغراضه (كالشعر المسرحي والملحمي)، مما جعله أكثر حيوية وتأثيرًا.</p>
+                            <h3 class="text-lg font-bold mb-3 border-b-2 border-[#c9bba7] pb-2">رابعاً: أعلام المدرسة وإسهاماتهم</h3>
+                             <div class="space-y-2 accordion-group">
+                                <div class="accordion-item">
+                                    <button class="accordion-header w-full text-right flex justify-between items-center p-3 rounded-lg" onclick="toggleAccordion(this)">
+                                        <span class="font-semibold">21. ما الظروف الخاصة التي تهيأت لأحمد شوقي؟</span>
+                                        <span class="accordion-icon font-bold text-xl text-[#8c7a60]">+</span>
+                                    </button>
+                                    <div class="accordion-content">
+                                        <p class="p-4 leading-relaxed">تهيأت له ظروف خاصة مثل: دراسته للحقوق في فرنسا، اطلاعه على الآداب الفرنسية، مشاهدته للمسارح الأوروبية، ثقافته التركية الواسعة، وتأثره بالنقاد والجمهور.</p>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <button class="accordion-header w-full text-right flex justify-between items-center p-3 rounded-lg" onclick="toggleAccordion(this)">
+                                        <span class="font-semibold">22. ما الدور الرائد الذي قام به أحمد شوقي في تطوير الشعر؟</span>
+                                        <span class="accordion-icon font-bold text-xl text-[#8c7a60]">+</span>
+                                    </button>
+                                    <div class="accordion-content">
+                                        <p class="p-4 leading-relaxed">دوره الأبرز هو ريادته للشعر المسرحي العربي، حيث ألف عدة مسرحيات شعرية ناجحة مثل "مصرع كليوباترا" و"مجنون ليلى".</p>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <button class="accordion-header w-full text-right flex justify-between items-center p-3 rounded-lg" onclick="toggleAccordion(this)">
+                                        <span class="font-semibold">23. اذكر مظهرين للتجديد في شعر شوقي بعيدًا عن المسرح.</span>
+                                        <span class="accordion-icon font-bold text-xl text-[#8c7a60]">+</span>
+                                    </button>
+                                    <div class="accordion-content">
+                                        <p class="p-4 leading-relaxed">1. وصف المنجزات العصرية الحديثة (الطائرة، السفينة). 2. الاتجاه بالشعر وجهة تاريخية، كما في قصيدته "كبار الحوادث في وادي النيل".</p>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <button class="accordion-header w-full text-right flex justify-between items-center p-3 rounded-lg" onclick="toggleAccordion(this)">
+                                        <span class="font-semibold">24. بماذا لُقب حافظ إبراهيم؟ وما السمة التي غلبت على شعره؟</span>
+                                        <span class="accordion-icon font-bold text-xl text-[#8c7a60]">+</span>
+                                    </button>
+                                    <div class="accordion-content">
+                                        <p class="p-4 leading-relaxed">لُقب بـ "شاعر النيل" و "شاعر الشعب". وغلبت على شعره سمة التفاعل مع القضايا الاجتماعية والوطنية، فكان بحق لسان حال الأمة.</p>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <button class="accordion-header w-full text-right flex justify-between items-center p-3 rounded-lg" onclick="toggleAccordion(this)">
+                                        <span class="font-semibold">25. من هو الشاعر الذي طوع الشعر للقصص الملحمي؟ وما أشهر أعماله؟</span>
+                                        <span class="accordion-icon font-bold text-xl text-[#8c7a60]">+</span>
+                                    </button>
+                                    <div class="accordion-content">
+                                        <p class="p-4 leading-relaxed">هو الشاعر أحمد محرم. وأشهر أعماله هو ديوانه "مجد الإسلام"، المعروف بـ "الإلياذة الإسلامية"، الذي تناول فيه سيرة النبي محمد (ص) والغزوات.</p>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <button class="accordion-header w-full text-right flex justify-between items-center p-3 rounded-lg" onclick="toggleAccordion(this)">
+                                        <span class="font-semibold">26. "لم يتخلَّ التلاميذ عن القديم كلية". دلل على ذلك بمثال.</span>
+                                        <span class="accordion-icon font-bold text-xl text-[#8c7a60]">+</span>
+                                    </button>
+                                    <div class="accordion-content">
+                                        <p class="p-4 leading-relaxed">الدليل على ذلك هو أنهم كانوا يبدأون بعض قصائدهم بالغزل التقليدي على عادة القدماء، حتى لو كان الغرض الرئيسي للقصيدة هو المدح أو الرثاء، مثلما فعل حافظ إبراهيم في مدح البارودي.</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <!-- Q5 -->
+
+                         <!-- Category 5 -->
                         <div>
-                            <button class="accordion-header w-full text-right flex justify-between items-center p-3 rounded-lg" onclick="toggleAccordion(this)">
-                                <span class="font-semibold">س5: ما ملامح تجديد تلاميذ البارودي للشعر العربي؟</span>
-                                <span class="accordion-icon font-bold text-xl text-[#8c7a60]">+</span>
-                            </button>
-                            <div class="accordion-content">
-                                <p class="p-4 leading-relaxed">الملامح هي: معالجة مشكلات المجتمع، الاهتمام بالتجارب الذاتية، التنويع في الأغراض الشعرية (كالمسرحي والملحمي)، وسهولة الأسلوب نتيجة ارتباطهم بالصحافة.</p>
-                            </div>
-                        </div>
-                        <!-- Q6 -->
-                        <div>
-                            <button class="accordion-header w-full text-right flex justify-between items-center p-3 rounded-lg" onclick="toggleAccordion(this)">
-                                <span class="font-semibold">س6: ما الظروف التي تهيأت لشوقي ولم تتهيأ لغيره؟</span>
-                                <span class="accordion-icon font-bold text-xl text-[#8c7a60]">+</span>
-                            </button>
-                            <div class="accordion-content">
-                                <p class="p-4 leading-relaxed">تهيأت له ظروف خاصة مثل: دراسته للحقوق في فرنسا، اطلاعه على الآداب الفرنسية، مشاهدته للمسارح الأوروبية، ثقافته التركية الواسعة، وتأثره بالنقاد والجمهور.</p>
-                            </div>
-                        </div>
-                        <!-- Q7 -->
-                        <div>
-                            <button class="accordion-header w-full text-right flex justify-between items-center p-3 rounded-lg" onclick="toggleAccordion(this)">
-                                <span class="font-semibold">س7: ما دور شوقي في تطور الشعر العربي؟</span>
-                                <span class="accordion-icon font-bold text-xl text-[#8c7a60]">+</span>
-                            </button>
-                            <div class="accordion-content">
-                                <p class="p-4 leading-relaxed">كان له دور محوري؛ حيث عدل عن شعر المديح إلى شعر التاريخ والوطنية، ووصف المنجزات العصرية الحديثة، والأهم من ذلك أنه كان رائدًا للشعر المسرحي العربي.</p>
-                            </div>
-                        </div>
-                        <!-- Q8 -->
-                        <div>
-                            <button class="accordion-header w-full text-right flex justify-between items-center p-3 rounded-lg" onclick="toggleAccordion(this)">
-                                <span class="font-semibold">س8: لماذا يُعد شوقي رائداً للمسرح العربي؟</span>
-                                <span class="accordion-icon font-bold text-xl text-[#8c7a60]">+</span>
-                            </button>
-                            <div class="accordion-content">
-                                <p class="p-4 leading-relaxed">لأنه أول من ألف مسرحيات شعرية عربية ناجحة ومتكاملة بداية من مسرحية "علي بك الكبير" ثم "مصرع كليوباترا" و"مجنون ليلى" وغيرها، وبذلك أسس لفن المسرح الشعري في الأدب العربي الحديث.</p>
+                            <h3 class="text-lg font-bold mb-3 border-b-2 border-[#c9bba7] pb-2">خامساً: التحليل والمقارنة</h3>
+                             <div class="space-y-2 accordion-group">
+                                <div class="accordion-item">
+                                    <button class="accordion-header w-full text-right flex justify-between items-center p-3 rounded-lg" onclick="toggleAccordion(this)">
+                                        <span class="font-semibold">27. قارن بين "وحدة البيت" عند الكلاسيكيين و "الوحدة العضوية" عند الرومانسيين.</span>
+                                        <span class="accordion-icon font-bold text-xl text-[#8c7a60]">+</span>
+                                    </button>
+                                    <div class="accordion-content">
+                                        <p class="p-4 leading-relaxed"><strong>وحدة البيت</strong> تعني أن كل بيت في القصيدة قائم بذاته، يمكن فهمه بمعزل عن غيره، وهذا يسمح بتعدد الموضوعات. أما <strong>الوحدة العضوية</strong> فتعني أن القصيدة كلها بناء متكامل لا يمكن فصل أجزائه، تدور حول موضوع واحد وجو نفسي واحد.</p>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <button class="accordion-header w-full text-right flex justify-between items-center p-3 rounded-lg" onclick="toggleAccordion(this)">
+                                        <span class="font-semibold">28. "طغيان شعر المناسبات على أشعارهم عيب فني وميزة تاريخية". حلل.</span>
+                                        <span class="accordion-icon font-bold text-xl text-[#8c7a60]">+</span>
+                                    </button>
+                                    <div class="accordion-content">
+                                        <p class="p-4 leading-relaxed">هي <strong>عيب فني</strong> لأن الشعر المكتوب لمناسبة قد يفتقر للصدق الشعوري والتجربة الذاتية العميقة. وهي <strong>ميزة تاريخية</strong> لأن هذا الشعر جعلهم يسجلون كل أحداث عصرهم بدقة، فأصبح شعرهم بمثابة سجل تاريخي واجتماعي لتلك الفترة.</p>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <button class="accordion-header w-full text-right flex justify-between items-center p-3 rounded-lg" onclick="toggleAccordion(this)">
+                                        <span class="font-semibold">29. ما الذي أخذه الاتجاه الوجداني (مطران) على شعراء الإحياء؟</span>
+                                        <span class="accordion-icon font-bold text-xl text-[#8c7a60]">+</span>
+                                    </button>
+                                    <div class="accordion-content">
+                                        <p class="p-4 leading-relaxed">أخذ عليهم اهتمامهم الزائد بشعر المناسبات والمجاملات، وعدم اهتمامهم بالوحدة العضوية في القصيدة، وانصرافهم عن التعبير عن النفس وما يشغلها من أحاسيس.</p>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <button class="accordion-header w-full text-right flex justify-between items-center p-3 rounded-lg" onclick="toggleAccordion(this)">
+                                        <span class="font-semibold">30. في رأيك، ما هو الإسهام الأكبر لمدرسة الإحياء والبعث؟</span>
+                                        <span class="accordion-icon font-bold text-xl text-[#8c7a60]">+</span>
+                                    </button>
+                                    <div class="accordion-content">
+                                        <p class="p-4 leading-relaxed">(إجابة تحليلية) الإسهام الأكبر هو أنها أنقذت الشعر العربي من موات محقق، وأعادت له قوته وهيبته، وبنت جسرًا صلبًا بين التراث العريق والحداثة، مما مهد الطريق لظهور كل المدارس التجديدية اللاحقة.</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 
@@ -342,20 +565,19 @@
             const icon = element.querySelector('.accordion-icon');
             const isActive = element.classList.contains('active');
 
-            // Close all other accordions
-            document.querySelectorAll('.accordion-header').forEach(header => {
-                if (header !== element) {
-                    header.classList.remove('active');
-                    header.nextElementSibling.style.maxHeight = null;
-                    header.querySelector('.accordion-icon').textContent = '+';
-                }
-            });
-
             if (isActive) {
                 content.style.maxHeight = null;
                 icon.textContent = '+';
                 element.classList.remove('active');
             } else {
+                // Close other accordions in the same group before opening a new one
+                const parentGroup = element.closest('.accordion-group');
+                parentGroup.querySelectorAll('.accordion-header.active').forEach(header => {
+                    header.classList.remove('active');
+                    header.nextElementSibling.style.maxHeight = null;
+                    header.querySelector('.accordion-icon').textContent = '+';
+                });
+
                 content.style.maxHeight = content.scrollHeight + "px";
                 icon.textContent = '−';
                 element.classList.add('active');

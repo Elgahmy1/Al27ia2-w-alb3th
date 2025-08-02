@@ -3,17 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> قصة مدرسة الإحياء والبعث</title>
+    <title>  مدرسة الإحياء والبعث</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;600;700&display=swap" rel="stylesheet">
     <!-- Chosen Palette: Calming Earth Tones -->
-    <!-- Application Structure Plan: The application is designed as a vertical, "story-timeline" scrollable page. It guides the user through a chronological and thematic journey. Each major concept (Founder, Disciples, Factors, Manifestations, Key Figures, Legacy) is presented as a distinct "stop" or "chapter" on this journey, separated by visual dividers. Interactivity is focused and purposeful: modal popups for disciple details to keep the main view clean, and a linked-list interaction for cause-and-effect. This structure was chosen to be calming, intuitive, and easy to follow, directly addressing the user's request for a "calmer" and "easier to understand" alternative to the mind map. -->
+    <!-- Application Structure Plan: The application is designed as a vertical, "story-timeline" scrollable page. It guides the user through a chronological and thematic journey. Each major concept (Founder, Disciples, Factors, Manifestations, Key Figures, Legacy) is presented as a distinct "stop" or "chapter" on this journey, separated by visual dividers. Interactivity is focused and purposeful: modal popups for disciple details, a linked-list interaction for cause-and-effect, and an accordion for the final exercises section. This structure was chosen to be calming, intuitive, and easy to follow. -->
     <!-- Visualization & Content Choices: 
-        - Report Info: Disciples and their learning methods. -> Goal: Organize & Inform cleanly. -> Viz/Method: Cards with a "Learn More" button that triggers a modal window. -> Interaction: Clicking a button opens a focused popup. -> Justification: Prevents cluttering the main timeline with too much text, allowing users to optionally dive deeper. -> Library: Vanilla JS.
-        - Report Info: Renewal Factors and Manifestations. -> Goal: Show Relationships clearly. -> Viz/Method: Two linked columns. -> Interaction: Hovering over a "Factor" on the left highlights the corresponding "Manifestation" on the right. -> Justification: A simple, elegant, and highly intuitive way to show the direct cause-and-effect link without complex charts. -> Library: Vanilla JS.
-        - Report Info: Key Figures (Shawqi, Muharram). -> Goal: Highlight contributions. -> Viz/Method: Styled "profile" cards with bullet points. -> Justification: Gives these figures the prominence they deserve in a clear, organized format. -> Library: N/A (HTML/CSS).
+        - Report Info: Disciples and their learning methods. -> Goal: Organize & Inform cleanly. -> Viz/Method: Cards with a "Learn More" button that triggers a modal window. -> Interaction: Clicking a button opens a focused popup. -> Justification: Prevents cluttering the main timeline with too much text. -> Library: Vanilla JS.
+        - Report Info: Renewal Factors and Manifestations. -> Goal: Show Relationships clearly. -> Viz/Method: Two linked columns. -> Interaction: Hovering over a "Factor" highlights the corresponding "Manifestation". -> Justification: A simple, elegant way to show the cause-and-effect link. -> Library: Vanilla JS.
+        - Report Info: Key Figures (Shawqi, Muharram). -> Goal: Highlight contributions. -> Viz/Method: Styled "profile" cards. -> Justification: Gives prominence to these figures in an organized format. -> Library: N/A (HTML/CSS).
+        - Report Info: Exercises and Answers. -> Goal: Test understanding. -> Viz/Method: Interactive Accordion. -> Interaction: Clicking a question reveals its answer. -> Justification: A compact and clean way to present Q&A content without a long scroll. -> Library: Vanilla JS.
     -->
     <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
     <style>
@@ -56,6 +57,25 @@
         }
         .modal-backdrop {
             background-color: rgba(0, 0, 0, 0.5);
+        }
+        .accordion-header {
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .accordion-header:hover {
+            background-color: #f0ebe5;
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-in-out;
+            background-color: #faf8f5;
+        }
+        .accordion-icon {
+            transition: transform 0.3s ease;
+        }
+        .accordion-header.active .accordion-icon {
+            transform: rotate(45deg);
         }
     </style>
 </head>
@@ -137,7 +157,6 @@
                 <div class="bg-white p-6 rounded-xl shadow-md">
                     <h2 class="text-2xl font-bold text-[#8c7a60] mb-4">الفصل الرابع: أعلام التجديد</h2>
                     <div class="space-y-6">
-                        <!-- Ahmed Shawqi -->
                         <div class="bg-gray-50 p-4 rounded-lg border-r-4 border-[#8c7a60]">
                             <h3 class="text-xl font-semibold mb-2">أحمد شوقي (أمير الشعراء)</h3>
                             <ul class="list-disc pr-5 space-y-1 text-sm">
@@ -146,7 +165,6 @@
                                 <li><strong>شاعر المخترعات:</strong> وصف في شعره المنجزات العصرية كالطائرة والسفينة.</li>
                             </ul>
                         </div>
-                        <!-- Ahmed Muharram -->
                         <div class="bg-gray-50 p-4 rounded-lg border-r-4 border-[#8c7a60]">
                             <h3 class="text-xl font-semibold mb-2">أحمد محرم</h3>
                             <ul class="list-disc pr-5 space-y-1 text-sm">
@@ -167,6 +185,98 @@
                     <p class="leading-relaxed">لا، لم يتخلوا عن القديم تمامًا، بل كانوا كمن يبني جسرًا يربط بين عظمة الماضي وروح الحاضر. لقد حافظوا على جمال وقوة القصيدة العربية الأصيلة، وفي نفس الوقت جعلوها تعبر عن قضاياهم وتجاربهم الذاتية، فخطوا بالشعر خطوات فاقت ما صنعه أستاذهم البارودي.</p>
                 </div>
             </div>
+
+            <!-- Item 6: Exercises -->
+            <div class="timeline-item relative">
+                <div class="timeline-dot">6</div>
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <h2 class="text-2xl font-bold text-[#8c7a60] mb-4">الفصل السادس: تدريبات وتطبيقات</h2>
+                    <p class="mb-6 text-gray-600">اختبر فهمك للدرس. اضغط على كل سؤال لترى الإجابة التفصيلية.</p>
+                    <div class="space-y-2">
+                        <!-- Q1 -->
+                        <div>
+                            <button class="accordion-header w-full text-right flex justify-between items-center p-3 rounded-lg" onclick="toggleAccordion(this)">
+                                <span class="font-semibold">س1: ما أثر النضال الوطني على تلاميذ البارودي؟</span>
+                                <span class="accordion-icon font-bold text-xl text-[#8c7a60]">+</span>
+                            </button>
+                            <div class="accordion-content">
+                                <p class="p-4 leading-relaxed">أدى النضال الوطني ضد الاستعمار إلى زيادة وعي تلاميذ البارودي، فعمّق إحساسهم بتراث الأجداد وأهمية الوحدة لمواجهة المحتل، وهو ما دفعهم لكتابة شعر حماسي يدعو للثورة ويرسخ الهوية الوطنية.</p>
+                            </div>
+                        </div>
+                        <!-- Q2 -->
+                        <div>
+                            <button class="accordion-header w-full text-right flex justify-between items-center p-3 rounded-lg" onclick="toggleAccordion(this)">
+                                <span class="font-semibold">س2: ما موقف تلاميذ البارودي من مشكلات مجتمعهم؟</span>
+                                <span class="accordion-icon font-bold text-xl text-[#8c7a60]">+</span>
+                            </button>
+                            <div class="accordion-content">
+                                <p class="p-4 leading-relaxed">كان موقفهم إيجابيًا ومتفاعلًا؛ حيث عالجوا مشكلات مجتمعهم السياسية والاجتماعية، وجعلوا شعرهم مرآة صادقة لروح العصر الذي يعيشون فيه، فلم يعد الشعر مقتصرًا على الأغراض التقليدية فقط.</p>
+                            </div>
+                        </div>
+                        <!-- Q3 -->
+                        <div>
+                            <button class="accordion-header w-full text-right flex justify-between items-center p-3 rounded-lg" onclick="toggleAccordion(this)">
+                                <span class="font-semibold">س3: ما العوامل التي ساعدت تلاميذ البارودي على التطوير؟</span>
+                                <span class="accordion-icon font-bold text-xl text-[#8c7a60]">+</span>
+                            </button>
+                            <div class="accordion-content">
+                                <p class="p-4 leading-relaxed">العوامل هي: الانفتاح على الثقافة الغربية، النضال الوطني الذي عمّق وعيهم، إيمانهم بفكرة الجامعة الإسلامية، وتفاعلهم مع قضايا العصر المتغيرة.</p>
+                            </div>
+                        </div>
+                        <!-- Q4 -->
+                        <div>
+                           <button class="accordion-header w-full text-right flex justify-between items-center p-3 rounded-lg" onclick="toggleAccordion(this)">
+                                <span class="font-semibold">س4: كيف فاقت خطوات التلاميذ ما صنعه البارودي؟</span>
+                                <span class="accordion-icon font-bold text-xl text-[#8c7a60]">+</span>
+                            </button>
+                            <div class="accordion-content">
+                                <p class="p-4 leading-relaxed">لأنهم لم يكتفوا بإحياء الشعر فقط، بل جعلوه يعبر عن قضايا عصرهم وتجاربهم الذاتية، وربطوه بالصحافة والجماهير، وطوروا في أغراضه (كالشعر المسرحي والملحمي)، مما جعله أكثر حيوية وتأثيرًا.</p>
+                            </div>
+                        </div>
+                        <!-- Q5 -->
+                        <div>
+                            <button class="accordion-header w-full text-right flex justify-between items-center p-3 rounded-lg" onclick="toggleAccordion(this)">
+                                <span class="font-semibold">س5: ما ملامح تجديد تلاميذ البارودي للشعر العربي؟</span>
+                                <span class="accordion-icon font-bold text-xl text-[#8c7a60]">+</span>
+                            </button>
+                            <div class="accordion-content">
+                                <p class="p-4 leading-relaxed">الملامح هي: معالجة مشكلات المجتمع، الاهتمام بالتجارب الذاتية، التنويع في الأغراض الشعرية (كالمسرحي والملحمي)، وسهولة الأسلوب نتيجة ارتباطهم بالصحافة.</p>
+                            </div>
+                        </div>
+                        <!-- Q6 -->
+                        <div>
+                            <button class="accordion-header w-full text-right flex justify-between items-center p-3 rounded-lg" onclick="toggleAccordion(this)">
+                                <span class="font-semibold">س6: ما الظروف التي تهيأت لشوقي ولم تتهيأ لغيره؟</span>
+                                <span class="accordion-icon font-bold text-xl text-[#8c7a60]">+</span>
+                            </button>
+                            <div class="accordion-content">
+                                <p class="p-4 leading-relaxed">تهيأت له ظروف خاصة مثل: دراسته للحقوق في فرنسا، اطلاعه على الآداب الفرنسية، مشاهدته للمسارح الأوروبية، ثقافته التركية الواسعة، وتأثره بالنقاد والجمهور.</p>
+                            </div>
+                        </div>
+                        <!-- Q7 -->
+                        <div>
+                            <button class="accordion-header w-full text-right flex justify-between items-center p-3 rounded-lg" onclick="toggleAccordion(this)">
+                                <span class="font-semibold">س7: ما دور شوقي في تطور الشعر العربي؟</span>
+                                <span class="accordion-icon font-bold text-xl text-[#8c7a60]">+</span>
+                            </button>
+                            <div class="accordion-content">
+                                <p class="p-4 leading-relaxed">كان له دور محوري؛ حيث عدل عن شعر المديح إلى شعر التاريخ والوطنية، ووصف المنجزات العصرية الحديثة، والأهم من ذلك أنه كان رائدًا للشعر المسرحي العربي.</p>
+                            </div>
+                        </div>
+                        <!-- Q8 -->
+                        <div>
+                            <button class="accordion-header w-full text-right flex justify-between items-center p-3 rounded-lg" onclick="toggleAccordion(this)">
+                                <span class="font-semibold">س8: لماذا يُعد شوقي رائداً للمسرح العربي؟</span>
+                                <span class="accordion-icon font-bold text-xl text-[#8c7a60]">+</span>
+                            </button>
+                            <div class="accordion-content">
+                                <p class="p-4 leading-relaxed">لأنه أول من ألف مسرحيات شعرية عربية ناجحة ومتكاملة بداية من مسرحية "علي بك الكبير" ثم "مصرع كليوباترا" و"مجنون ليلى" وغيرها، وبذلك أسس لفن المسرح الشعري في الأدب العربي الحديث.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 
@@ -226,6 +336,31 @@
                 }
             });
         });
+
+        function toggleAccordion(element) {
+            const content = element.nextElementSibling;
+            const icon = element.querySelector('.accordion-icon');
+            const isActive = element.classList.contains('active');
+
+            // Close all other accordions
+            document.querySelectorAll('.accordion-header').forEach(header => {
+                if (header !== element) {
+                    header.classList.remove('active');
+                    header.nextElementSibling.style.maxHeight = null;
+                    header.querySelector('.accordion-icon').textContent = '+';
+                }
+            });
+
+            if (isActive) {
+                content.style.maxHeight = null;
+                icon.textContent = '+';
+                element.classList.remove('active');
+            } else {
+                content.style.maxHeight = content.scrollHeight + "px";
+                icon.textContent = '−';
+                element.classList.add('active');
+            }
+        }
     </script>
 </body>
 </html>
